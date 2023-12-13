@@ -33,7 +33,7 @@ mod tests {
         // adds another layer of Option<T>. You can stack `Option<T>`s into
         // while let and if let.
         while let integer = optional_integers.pop() {
-            assert_eq!(integer,Some(Some(cursor)));
+            assert_eq!(integer.unwrap(),Some(cursor));
             cursor -= 1;
         }
 
