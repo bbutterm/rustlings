@@ -6,12 +6,13 @@
 // Execute `rustlings hint tests2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 #[cfg(test)]
 mod tests {
     #[test]
     fn you_can_assert_eq() {
-        assert_eq!();
+        let temperature = 36.6;
+        let iq = 36.6;
+        assert_eq!(temperature,iq);
     }
 }
