@@ -40,11 +40,13 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
         if s.len()==0{
+            Person::default()
+        }
+        else if !s.contains(","){
             Person::default()
         }
         else{
@@ -53,9 +55,13 @@ impl From<&str> for Person {
                 Person::default()
             }
             else{
-                let age = data[1].parse::<usize>().unwrap();
-                let res:Person = Person{name:data[0].to_string(),age:age};
-                res
+                let age = data[1].parse::<usize>();//.unwrap();
+                match age{
+                    Ok(i)=>{ let res:Person = Person{name:data[0].to_string(),age:i};res},
+                    Err(_)=>{ let res:Person = Person::default();res}
+                }
+                //let res:Person = Person{name:data[0].to_string(),age:age};
+                
             }
         }
     }
